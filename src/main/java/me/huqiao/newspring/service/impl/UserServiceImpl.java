@@ -42,7 +42,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User findById(Long id) {
 		Optional<User> res = userDao.findById(id);
-		return res.get();
+		return res.isPresent() ? res.get() : null;
+	}
+
+	@Override
+	public void update(User user) {
+		userDao.save(user);
 	}
 
 }

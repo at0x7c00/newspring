@@ -6,6 +6,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import me.huqiao.newspring.util.Md5Util;
+
 @Entity
 @Table(name = "sys_user")
 public class User {
@@ -16,6 +18,12 @@ public class User {
 	private String username;
 	private String password;
 	
+	public User() {
+	}
+	public User(String username2, String password2) {
+		this.username = username2;
+		this.password = Md5Util.getMD5String(password2);
+	}
 	public Long getId() {
 		return id;
 	}
